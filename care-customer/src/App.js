@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Customer from './components/Customer';
-
+import { Paper,TableHead,TableBody,Table,TableRow,TableCell } from '@mui/material';
 const customer =[
   {
   'id':1,
@@ -28,13 +28,37 @@ const customer =[
   'job':'피아니스트'
 }
 ]
+const styles = {
+  root: {
+  width: "100%",
+  overflowX: "auto"
+  },
+  table: {
+  minWidth: 1080
+  }
+  };
 function App() {
+ 
+  console.log("classes",styles);
   return (
-    <div>
+    <Paper >
+      <Table sx={{minWidth:1080}}>
+        <TableHead>
+          <TableRow>
+            <TableCell align='center'>번호</TableCell>
+            <TableCell align='center'>이미지</TableCell>
+            <TableCell align='center'>이름</TableCell>
+            <TableCell align='center'>생년월일</TableCell>
+            <TableCell align='center'>성별</TableCell>
+            <TableCell align='center'>직업</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody >
     {customer.map((c) =>(
-      <Customer 
+      <Customer  align='center'
       
       key={c.id}
+      id={c.id}
       image={c.image}
         name={c.name}
         birthday={c.birthday}
@@ -42,7 +66,9 @@ function App() {
         job={c.job}
       />
     ))}
-    </div>
+    </TableBody>
+    </Table>
+    </Paper>
  
   );
 }
